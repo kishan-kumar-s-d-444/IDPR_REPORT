@@ -13,7 +13,12 @@
 \usepackage{longtable}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
-
+\usepackage{array}       
+\usepackage{adjustbox}
+\usepackage{tabularx}    
+\usepackage{booktabs}    
+\usepackage{caption}     
+\usepackage{ragged2e}    
 % Header and footer setup
 \pagestyle{fancy}{
 \fancypagestyle{plain}{
@@ -116,51 +121,55 @@ This project introduces an intelligent traffic management system powered by IoT 
 
 The historical evolution of traffic management systems has progressed from simple mechanical timers to electronic controllers, and now to intelligent systems capable of real-time adaptation. This project represents the next generation of traffic management, incorporating artificial intelligence and IoT connectivity to create a truly responsive traffic control system.
 
-You are allowed to use figures or diagrams which can help in introducing the topic acknowledging the source. For example, if you are introducing the traffic management concept, an appropriate system architecture diagram can be used. The figure should be referenced in the text as Figure. \ref{fig:system_architecture} 
+As in Figure \ref{fig:system_architecture} the Smart Traffic Management System Architecture utilizes a combination of ultrasonic and IR sensors to detect congestion levels, while urban sonic sensors and a YOLO model with OpenCV enable AI-based image processing for vehicle density detection. Data is collected and processed by an Arduino Mega and ESP8266, which then adjusts traffic signal durations accordingly. The system also features a website to display real-time traffic status, ensuring efficient traffic flow and congestion management. 
 \begin{figure}[htb]
 \centering
-	\includegraphics[scale=1]{Figures/system_architecture}	
+	\includegraphics[scale=1]{Figures/system_architecture.png}	
 	\caption{System Architecture of Intelligent Traffic Management System}
 	\label{fig:system_architecture}
 \end{figure}
 
-These guidelines are provided to formally expose you to the various ethical and technical issues involved in writing up your work and the format you are required to adhere to while submitting your project report.
-
-\section[Literature Review]{\textbf{Literature Review}}
-
-A literature review is a text of a scholarly paper, which includes the current knowledge including substantive findings, as well as theoretical and methodological contributions to intelligent traffic management systems. Literature reviews are secondary sources, and do not report new or original experimental work. Most often associated with academic-oriented literature, such reviews are found in academic journals focusing on transportation engineering, IoT applications, and machine learning in traffic systems.
-
-The literature review for this project encompasses research in multiple domains including traffic flow optimization, IoT sensor integration, computer vision applications in transportation, and machine learning algorithms for predictive traffic management. Current research demonstrates the effectiveness of adaptive traffic control systems in reducing congestion and improving traffic flow efficiency.
-
-\subsection{Recent Advances in Traffic Management}
-Recent studies have shown significant improvements in traffic flow efficiency through the implementation of intelligent traffic management systems. Research indicates that adaptive traffic control systems can reduce average waiting times by 25-40% compared to traditional fixed-timing systems.
-
-\subsubsection[IoT-Based Traffic Systems]{\textbf{IoT-Based Traffic Systems}}
-
-The integration of Internet of Things technologies in traffic management has revolutionized how traffic data is collected and processed. IoT-enabled sensors provide real-time data collection capabilities, enabling dynamic response to changing traffic conditions. Studies have demonstrated that IoT-based systems offer superior scalability and cost-effectiveness compared to traditional infrastructure-heavy solutions.
-
-\subsubsection[Machine Learning in Traffic Control]{\textbf{Machine Learning in Traffic Control}}
-
-Machine learning algorithms have shown remarkable success in predicting traffic patterns and optimizing signal timing. Supervised learning models, particularly decision trees and random forests, have proven effective in analyzing historical traffic data and making real-time decisions. These algorithms can adapt to changing traffic patterns and provide predictive capabilities for traffic management.
-
-\subsubsection{\textbf{Computer Vision Applications}}
-
-Computer vision techniques using frameworks like OpenCV and deep learning models such as YOLOv5 have enabled accurate vehicle detection and classification. These technologies allow for real-time analysis of traffic video streams, providing detailed information about vehicle types, counts, and movement patterns.
-
-This section should contain the review of the literature focusing on intelligent traffic management systems. You should review a minimum of 10 papers from standard journals in transportation engineering, IoT applications, and machine learning. Focus on papers discussing adaptive traffic control, sensor integration, and emergency vehicle prioritization systems.
-
-\subsubsection{\textbf{Plagiarism}}
-
-To use someone else's exact words without quotation marks and appropriate credit, or to use the unique ideas of someone else without acknowledgement, is known as plagiarism. In publishing, plagiarism is illegal; in other circumstances, it is, at the least, unethical. You may quote or paraphrase the words or ideas of another if you document your source. Although you need not enclose the paraphrased material in quotation marks, you must document the source.
-
-\subsubsection{How to add Reference}
-Use \texttt{Jabref} which will help in adding the reference in a separate file, from which one can use \verb|\citep\{\}| command to add reference. A sample, referring to a transportation engineering textbook would look something like this,\cite{Transportation2023}.
-
-\subsubsection[Motivation]{\textbf{Motivation}}
+\section[Motivation]{\textbf{Motivation}}
 
 The motivation for selecting this project stems from the critical need to address urban traffic congestion and its associated problems. Traditional traffic management systems are inadequate for handling the dynamic nature of modern traffic patterns. The increasing vehicle density in urban areas, coupled with the need for emergency vehicle prioritization, creates an urgent requirement for intelligent traffic management solutions.
 
 The challenges in current traffic management include inefficient fixed-timing systems, lack of real-time adaptability, poor emergency vehicle handling, and limited traffic data utilization. The relevance of this project lies in its potential to significantly improve traffic flow efficiency, reduce fuel consumption, minimize environmental impact, and enhance road safety through intelligent automation.
+
+\section[Literature Review]{\textbf{Literature Review}}
+
+The following table presents a concise review of key research papers related to traffic congestion control and emergency vehicle prioritization. The reviewed works focus on smart traffic systems, IoT-based management, swarm intelligence, and deep learning, with a focus on real-time implementation challenges and gaps in emergency prioritization and sensor integration.
+
+
+
+\begin{table}[h!]
+\begin{adjustbox}{width=\linewidth,left}
+\begin{tabular}{|p{4cm}|p{3.5cm}|p{5.5cm}|p{4.5cm}|}
+\hline
+\textbf{Title} & \textbf{Authors} & \textbf{Summary} & \textbf{Research Gap} \\
+\hline
+Smart Traffic Management for Congestion Control and Emergency Vehicle Priority (2025) & IEEE Conference & Dynamic traffic signal adjustment and emergency vehicle prioritization & No predictive traffic flow modeling using historical data \\
+\hline
+A Swarm Algorithm for Collaborative Traffic (2025) & Jamal Toutouh, Enrique Alba & Distributed swarm intelligence for vehicle coordination & Lacks integration with real-time sensor or camera data \\
+\hline
+LSTM-Based Proactive Congestion Management (2024) & Aly Sabri Abdalla et al & Predicts congestion using LSTM & Does not prioritize emergency vehicles \\
+\hline
+Hybrid Deep Learning-Based Congestion Control (2024) & Alexandria Engineering Journal & Combines CNN, RNN, and optimization for smart city traffic control & High computational cost limits real-time use \\
+\hline
+Traffic Congestion Control with Emergency Awareness (2025) & IEEE Access & Genetic algorithms and reinforcement learning for congestion and emergency priority & Scalability under dense networks not evaluated \\
+\hline
+Congestion Control Mechanisms for IoV (2023) & Lakhdar Kamel Ouladdjedid & Survey of existing cooperative IoV congestion solutions & No real-time sensor or camera data usage \\
+\hline
+Smart Signaling with IoT and Sensors (2024) & G. Saranya et al & Uses sensors and AWS for real-time light control & No camera-based vehicle detection \\
+\hline
+Real-Time Traffic Control using IoT (2024) & S.M. Najrul Howlader et al & IR sensors adjust signals based on vehicle density & Unvalidated in real-world dynamic scenarios \\
+\hline
+\end{tabular}
+\end{adjustbox}
+\vspace{0.5em} % optional space between table and caption
+\caption{Summary of Related Work and Research Gaps}
+\label{tab:literature}
+\end{table}
+
 
 \section[Problem statement]{\textbf{Problem statement}}
 
